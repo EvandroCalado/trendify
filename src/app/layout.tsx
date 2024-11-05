@@ -1,6 +1,6 @@
-import { regular, title } from '@/config/fonts';
+import { regular, title } from '@/configs/fonts';
 import type { Metadata } from 'next';
-import '../style/globals.css';
+import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Trendify Shop',
@@ -10,14 +10,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
-    <html lang='en'>
-      <body className={`${regular.variable} ${title.variable} antialiased`}>{children}</body>
+    <html lang="en">
+      <body className={`${regular.variable} ${title.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
