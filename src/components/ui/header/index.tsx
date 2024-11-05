@@ -1,41 +1,44 @@
 import { IconSearch, IconShoppingCart } from '@tabler/icons-react';
 import Link from 'next/link';
 
+const links = [
+  {
+    href: '/category/man',
+    label: 'Mans',
+  },
+  {
+    href: '/category/woman',
+    label: 'Womans',
+  },
+  {
+    href: '/category/kids',
+    label: 'Kids',
+  },
+];
+
 export const Header = () => {
   return (
     <header className="flex w-full items-center justify-between p-5">
+      {/* logo */}
       <Link href="/" className="flex items-center gap-4">
         <span className="font-title font-bold">Trendify</span>
         <span>|</span>
         <span className="text-sm font-semibold">Shop</span>
       </Link>
 
+      {/* nav menu */}
       <nav className="hidden md:block">
         <ul className="flex items-center gap-4 text-sm">
-          <li>
-            <Link
-              href="/category/man"
-              className="rounded-md px-4 py-2 transition-all hover:bg-zinc-200/50"
-            >
-              Mans
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/category/woman"
-              className="rounded-md px-4 py-2 transition-all hover:bg-zinc-200/50"
-            >
-              Womans
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/category/kids"
-              className="rounded-md px-4 py-2 transition-all hover:bg-zinc-200/50"
-            >
-              Kids
-            </Link>
-          </li>
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="rounded-md px-4 py-2 transition-all hover:bg-zinc-200/50"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -54,7 +57,7 @@ export const Header = () => {
           </div>
         </Link>
 
-        <button className="rounded-md px-4 py-2 transition-all hover:bg-zinc-200/50">
+        <button className="rounded-md px-4 py-2 text-sm transition-all hover:bg-zinc-200/50">
           Menu
         </button>
       </div>
