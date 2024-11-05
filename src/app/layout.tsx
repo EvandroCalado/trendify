@@ -1,12 +1,27 @@
 import { regular, title } from '@/configs/fonts';
 import type { Metadata } from 'next';
+import logoLight from '../../public/Logo-white.svg';
+import logoDark from '../../public/Logo.svg';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Trendify Shop',
   description: 'Discover the latest trends and timeless pieces in one place.',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      {
+        rel: 'icon',
+        media: '(prefers-color-scheme: dark)',
+        url: logoLight.src,
+        type: 'image/svg+xml',
+      },
+      {
+        rel: 'icon',
+        media: '(prefers-color-scheme: light)',
+        url: logoDark.src,
+        type: 'image/svg+xml',
+      },
+    ],
   },
 };
 
