@@ -4,7 +4,7 @@ import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Trendify Shop',
-  description: 'Discover the latest trends and timeless pieces in one place. ',
+  description: 'Discover the latest trends and timeless pieces in one place.',
   icons: {
     icon: '/favicon.ico',
   },
