@@ -1,8 +1,10 @@
+import { Title } from '@/components/ui';
+
 const ShopPage = () => {
   return (
-    <div>
-      <h1 className="font-title">Shop page</h1>
-    </div>
+    <section className="container mx-auto px-5">
+      <Title title="Shop" subtitle="Discover the latest trends" />
+    </section>
   );
 };
 
