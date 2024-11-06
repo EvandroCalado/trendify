@@ -1,5 +1,6 @@
 'use client';
 
+import { useUiStore } from '@/stores/ui';
 import {
   IconLogin2,
   IconLogout2,
@@ -11,6 +12,7 @@ import {
   IconUsers,
   IconX,
 } from '@tabler/icons-react';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { Separator } from '../Separator';
 
@@ -56,17 +58,32 @@ const adminLinks = [
 ];
 
 export const Menu = () => {
+  const { isMenuOpen, toggleMenu } = useUiStore((state) => state);
+
   return (
     <div>
       {/* fade bg */}
-      <div className="fixed left-0 top-0 z-10 h-screen w-screen bg-black/30 backdrop-blur-sm" />
+      {isMenuOpen && (
+        <div
+          className="fixed left-0 top-0 z-10 h-screen w-screen bg-black/30 backdrop-blur-sm"
+          onClick={toggleMenu}
+        />
+      )}
 
       {/* menu */}
-      <nav className="fixed right-0 top-0 z-20 h-screen w-[400px] transform bg-white p-5 shadow-2xl transition-all duration-300 [&>a>svg]:mr-4">
+      <nav
+        className={clsx(
+          'fixed right-0 top-0 z-20 h-screen w-[400px] transform bg-white p-5 shadow-2xl transition-all duration-300 [&>a>svg]:mr-4',
+          {
+            'translate-x-0': isMenuOpen,
+            'translate-x-full': !isMenuOpen,
+          },
+        )}
+      >
         <IconX
           size={30}
           className="absolute right-5 top-5 cursor-pointer transition-all duration-150 hover:text-blue-700"
-          onClick={() => console.log('clicked')}
+          onClick={toggleMenu}
         />
 
         {/* search input */}
@@ -83,8 +100,9 @@ export const Menu = () => {
         {userLinks.map((link) => (
           <Link
             key={link.href}
-            href="/"
+            href={link.href}
             className="mt-10 flex items-center rounded p-2 text-sm font-semibold transition-all hover:bg-zinc-200/50"
+            onClick={toggleMenu}
           >
             {link.icon}
             <span>{link.label}</span>
@@ -97,8 +115,9 @@ export const Menu = () => {
         {adminLinks.map((link) => (
           <Link
             key={link.href}
-            href="/"
+            href={link.href}
             className="mt-10 flex items-center rounded p-2 text-sm font-semibold transition-all hover:bg-zinc-200/50"
+            onClick={toggleMenu}
           >
             {link.icon}
             <span>{link.label}</span>

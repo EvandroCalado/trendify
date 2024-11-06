@@ -1,3 +1,6 @@
+'use client';
+
+import { useUiStore } from '@/stores/ui';
 import { IconSearch, IconShoppingCart } from '@tabler/icons-react';
 import Link from 'next/link';
 
@@ -17,6 +20,8 @@ const links = [
 ];
 
 export const Header = () => {
+  const toggleMenu = useUiStore((state) => state.toggleMenu);
+
   return (
     <header className="flex w-full items-center justify-between p-5">
       {/* logo */}
@@ -57,7 +62,10 @@ export const Header = () => {
           </div>
         </Link>
 
-        <button className="rounded-md px-4 py-2 text-sm transition-all hover:bg-zinc-200/50">
+        <button
+          className="rounded-md px-4 py-2 text-sm transition-all hover:bg-zinc-200/50"
+          onClick={toggleMenu}
+        >
           Menu
         </button>
       </div>
