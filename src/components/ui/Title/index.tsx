@@ -9,7 +9,7 @@ type TitleProps = {
 export const Title = ({ title, subtitle, className }: TitleProps) => {
   return (
     <div className="my-10 space-y-5">
-      <h1 className={cn('font-title text-2xl font-bold', className)}>
+      <h1 className={cn('font-title text-2xl font-bold uppercase', className)}>
         {title}
       </h1>
 
