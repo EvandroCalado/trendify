@@ -1,3 +1,6 @@
+import { ProductsGrid } from '@/components/products';
+import { Title } from '@/components/ui';
+import { initialData } from '@/seeds/seed';
 import { notFound } from 'next/navigation';
 
 type Props = {
@@ -6,15 +9,23 @@ type Props = {
   };
 };
 
+const products = initialData.products;
+
 const CategoryByIdPage = async ({ params }: Props) => {
   const { id } = await params;
 
-  if (id === 'kids') notFound();
+  const productsByCategory = products.filter(
+    (product) => product.gender === id,
+  );
+
+  if (productsByCategory.length === 0) notFound();
 
   return (
-    <div>
-      <h1 className="font-title">Category By Id page {id}</h1>
-    </div>
+    <section className="container mx-auto px-5">
+      <Title title={id} subtitle={`Discover the latest trends to ${id}s`} />
+
+      <ProductsGrid products={productsByCategory} />
+    </section>
   );
 };
 
