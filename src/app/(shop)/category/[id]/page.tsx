@@ -22,7 +22,7 @@ const CategoryByIdPage: FC<Props> = async ({ params }) => {
   if (productsByCategory.length === 0) notFound();
 
   return (
-    <section className="container mx-auto px-5">
+    <section className="mx-auto w-full max-w-screen-xl px-5">
       <Title title={id} subtitle={`Discover the latest trends to ${id}s`} />
 
       <ProductsGrid products={productsByCategory} />
