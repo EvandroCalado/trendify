@@ -2,6 +2,7 @@ import { ProductsGrid } from '@/components/products';
 import { Title } from '@/components/ui';
 import { initialData } from '@/seeds/seed';
 import { notFound } from 'next/navigation';
+import { FC } from 'react';
 
 type Props = {
   params: {
@@ -11,7 +12,7 @@ type Props = {
 
 const products = initialData.products;
 
-const CategoryByIdPage = async ({ params }: Props) => {
+const CategoryByIdPage: FC<Props> = async ({ params }) => {
   const { id } = await params;
 
   const productsByCategory = products.filter(
