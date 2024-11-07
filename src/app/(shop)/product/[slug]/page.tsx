@@ -4,6 +4,7 @@ import {
   ProductSlideDesktop,
   ProductSlideMobile,
 } from '@/components/product';
+import { Button } from '@/components/ui';
 import { initialData } from '@/seeds/seed';
 import { notFound } from 'next/navigation';
 import { FC } from 'react';
@@ -50,9 +51,7 @@ const ProductBySlugPage: FC<Props> = async ({ params }) => {
         <ProductQuantity quantity={5} />
 
         {/* button */}
-        <button className="btn-primary px-36 font-semibold">
-          Add to cart
-        </button>
+        <Button className="px-32 max-md:w-full">Add to cart</Button>
 
         {/* description */}
         <h3 className="text-sm font-bold">Description</h3>
