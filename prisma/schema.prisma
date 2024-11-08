@@ -38,16 +38,6 @@ model Category {
   @@map("categories")
 }
 
-model ProductImage {
-  id  Int    @id @default(autoincrement())
-  url String
-
-  product   Product @relation(fields: [productId], references: [id])
-  productId String
-
-  @@map("product_images")
-}
-
 model Product {
   id          String   @id @default(cuid())
   title       String
@@ -56,7 +46,7 @@ model Product {
   price       Float    @default(0)
   inStock     Int
   tags        String[] @default([])
-  size        Size[]   @default([])
+  sizes       Size[]   @default([])
   gender      Gender
 
   images ProductImage[]
@@ -65,6 +55,15 @@ model Product {
   categoryId String
 
   @@index([gender])
-
   @@map("products")
+}
+
+model ProductImage {
+  id  Int    @id @default(autoincrement())
+  url String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@map("product_images")
 }
