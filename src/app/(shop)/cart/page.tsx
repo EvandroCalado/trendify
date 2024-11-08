@@ -4,6 +4,7 @@ import { initialData } from '@/seeds/seed';
 import { IconChevronLeft } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const productsInCart = [
   initialData.products[0],
@@ -12,6 +13,8 @@ const productsInCart = [
 ];
 
 const CartPage = () => {
+  if (productsInCart.length === 0) redirect('/empty');
+
   return (
     <section className="mx-auto w-full max-w-screen-xl gap-5 px-5">
       <Title title="Cart" />
