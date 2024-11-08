@@ -16,7 +16,7 @@ const CartPage = () => {
   if (productsInCart.length === 0) redirect('/empty');
 
   return (
-    <section className="mx-auto w-full max-w-screen-xl gap-5 px-5">
+    <section className="mx-auto w-full max-w-screen-xl flex-1 gap-5 px-5">
       <Title title="Cart" />
 
       <Link

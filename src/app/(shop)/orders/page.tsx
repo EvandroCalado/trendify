@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const OrdersPage = () => {
   return (
-    <section className="mx-auto w-full max-w-screen-xl px-5">
+    <section className="mx-auto w-full max-w-screen-xl flex-1 px-5">
       <Title title="Orders" />
 
       <div className="mb-10">

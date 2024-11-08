@@ -22,7 +22,7 @@ const OrdersByIdPage: FC<props> = async ({ params }) => {
   const { id } = await params;
 
   return (
-    <section className="mx-auto w-full max-w-screen-xl gap-5 px-5">
+    <section className="mx-auto w-full max-w-screen-xl flex-1 gap-5 px-5">
       <Title title={`Order ${id}`} />
 
       <Link

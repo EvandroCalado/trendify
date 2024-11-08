@@ -2,7 +2,7 @@ import { Button, Input, Title } from '@/components/ui';
 
 const AddressPage = () => {
   return (
-    <section className="mx-auto w-full max-w-screen-xl px-5">
+    <section className="mx-auto w-full max-w-screen-xl flex-1 px-5">
       <Title title="Address" subtitle="Add your shipping address" />
 
       <div className="mb-5 flex w-full items-center gap-5 max-md:flex-col">
