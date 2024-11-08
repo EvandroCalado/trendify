@@ -12,3 +12,47 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Size {
+  XS
+  S
+  M
+  L
+  XL
+  XXL
+}
+
+enum Gender {
+  men
+  women
+  kid
+  unisex
+}
+
+model Category {
+  id   String @id @default(cuid())
+  name String @unique
+
+  products Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  slug        String   @unique
+  price       Float    @default(0)
+  inStock     Int
+  tags        String[] @default([])
+  size        Size[]   @default([])
+  gender      Gender
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  @@index([gender])
+
+  @@map("products")
+}
