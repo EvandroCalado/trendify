@@ -51,7 +51,7 @@ const ProductBySlugPage: FC<Props> = async ({ params }) => {
         <ProductQuantity quantity={5} />
 
         {/* button */}
-        <Button className="px-32 max-md:w-full">Add to cart</Button>
+        <Button className="max-md:w-full md:px-32">Add to cart</Button>
 
         {/* description */}
         <h3 className="text-sm font-bold">Description</h3>
