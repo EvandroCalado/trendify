@@ -3,6 +3,7 @@ export type Type = 'shirts' | 'pants' | 'hoodies' | 'hats';
 export type Gender = 'men' | 'women' | 'kid' | 'unisex';
 
 export type Product = {
+  id: string;
   description: string;
   images: string[];
   inStock: number;
