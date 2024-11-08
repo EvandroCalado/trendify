@@ -1,5 +1,5 @@
 import { Separator, Title } from '@/components/ui';
-import { initialData } from '@/seeds/seed';
+import { initialData } from '@/seeds';
 import { IconChevronLeft, IconCreditCard } from '@tabler/icons-react';
 import clsx from 'clsx';
 import Image from 'next/image';

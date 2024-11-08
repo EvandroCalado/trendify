@@ -1,6 +1,6 @@
 import { ProductQuantity } from '@/components/product';
 import { Button, Separator, Title } from '@/components/ui';
-import { initialData } from '@/seeds/seed';
+import { initialData } from '@/seeds';
 import { IconChevronLeft } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';

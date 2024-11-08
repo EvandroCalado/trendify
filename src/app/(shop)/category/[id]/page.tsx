@@ -1,6 +1,6 @@
 import { ProductsGrid } from '@/components/products';
 import { Title } from '@/components/ui';
-import { initialData } from '@/seeds/seed';
+import { initialData } from '@/seeds';
 import { notFound } from 'next/navigation';
 import { FC } from 'react';
 
