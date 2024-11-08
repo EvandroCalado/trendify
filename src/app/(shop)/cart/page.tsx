@@ -1,6 +1,7 @@
 import { ProductQuantity } from '@/components/product';
 import { Button, Separator, Title } from '@/components/ui';
 import { initialData } from '@/seeds/seed';
+import { IconChevronLeft } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,7 +16,11 @@ const CartPage = () => {
     <section className="mx-auto w-full max-w-screen-xl gap-5 px-5">
       <Title title="Cart" />
 
-      <Link href="/" className="text-sm underline underline-offset-4">
+      <Link
+        href="/cart"
+        className="flex w-max items-center text-sm font-semibold [&>svg]:transition-all [&>svg]:duration-150 [&>svg]:hover:-ml-1 [&>svg]:hover:mr-1 [&>svg]:hover:text-blue-700"
+      >
+        <IconChevronLeft size={18} />
         Continue shopping
       </Link>
 
@@ -72,8 +77,8 @@ const CartPage = () => {
             <span>$245</span>
           </div>
 
-          <Button as={'a'} href="/checkout">
-            Checkout
+          <Button as={'a'} href="/checkout/address">
+            Delivery
           </Button>
         </div>
       </div>

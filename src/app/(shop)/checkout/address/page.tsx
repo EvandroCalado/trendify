@@ -54,7 +54,7 @@ const AddressPage = () => {
         href="/checkout"
         className="w-max px-32 max-md:w-full md:mt-14"
       >
-        Continue
+        Checkout
       </Button>
     </section>
   );
