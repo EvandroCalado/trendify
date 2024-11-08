@@ -38,6 +38,16 @@ model Category {
   @@map("categories")
 }
 
+model ProductImage {
+  id  Int    @id @default(autoincrement())
+  url String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@map("product_images")
+}
+
 model Product {
   id          String   @id @default(cuid())
   title       String
@@ -48,6 +58,8 @@ model Product {
   tags        String[] @default([])
   size        Size[]   @default([])
   gender      Gender
+
+  images ProductImage[]
 
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
