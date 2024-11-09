@@ -14,7 +14,7 @@ import {
 } from '@tabler/icons-react';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { Separator } from '../Separator';
+import { Separator } from '../separator';
 
 const userLinks = [
   {
