@@ -1,9 +1,15 @@
 'use server';
 
 import { productMapper } from '@/mappers/products';
+import { Product } from '@/types';
 import { prisma } from '@/utils/prisma';
 
-type PaginationProps = {
+type GetPaginatedProductsResponse = {
+  totalPages: number;
+  products: Product[];
+};
+
+type GetPaginatedProductsProps = {
   page?: number;
   take?: number;
 };
@@ -11,7 +17,7 @@ type PaginationProps = {
 export const getPaginatedProducts = async ({
   page = 1,
   take = 12,
-}: PaginationProps) => {
+}: GetPaginatedProductsProps): Promise<GetPaginatedProductsResponse> => {
   if (isNaN(Number(page))) page = 1;
   if (page < 1) page = 1;
 
@@ -29,9 +35,15 @@ export const getPaginatedProducts = async ({
       },
     });
 
-    if (!products) return [];
+    if (!products) return { totalPages: 1, products: [] };
 
-    return productMapper(products);
+    const totalCount = await prisma.product.count({});
+    const totalPages = Math.ceil(totalCount / take);
+
+    return {
+      totalPages: totalPages,
+      products: productMapper(products),
+    };
   } catch (error) {
     throw new Error('Failed to fetch products', { cause: error });
   }
