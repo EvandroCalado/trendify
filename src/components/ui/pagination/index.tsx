@@ -50,7 +50,12 @@ export const Pagination: FC<PaginationProps> = ({ totalPages }) => {
         >
           <Link
             href={createPageUrl(Number(currentPage) - 1)}
-            className="relative inline-flex items-center rounded-l-md px-2 py-2 text-zinc-400 ring-1 ring-inset ring-zinc-300 hover:bg-zinc-300 focus:z-20 focus:outline-offset-0"
+            className={clsx(
+              'relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-zinc-300 hover:bg-zinc-300 focus:z-20 focus:outline-offset-0',
+              {
+                'pointer-events-none text-zinc-400': Number(currentPage) <= 1,
+              },
+            )}
           >
             <IconChevronLeft aria-hidden="true" className="h-5 w-5" />
           </Link>
@@ -70,27 +75,16 @@ export const Pagination: FC<PaginationProps> = ({ totalPages }) => {
               {page}
             </Link>
           ))}
-          {/* <Link
-            href="#"
-            aria-current="page"
-            className="relative z-10 inline-flex items-center bg-blue-700 px-4 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-zinc-300 focus:z-20 focus-visible:outline focus-visible:outline-blue-700"
-          >
-            1
-          </Link>
-          <Link
-            href="#"
-            className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-300 hover:bg-zinc-300 focus:z-20 focus:outline-offset-0"
-          >
-            2
-          </Link> */}
-
-          {/* <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-zinc-700 ring-1 ring-inset ring-zinc-300 focus:outline-offset-0">
-            ...
-          </span> */}
 
           <Link
             href={createPageUrl(Number(currentPage) + 1)}
-            className="relative inline-flex items-center rounded-r-md px-2 py-2 text-zinc-400 ring-1 ring-inset ring-zinc-300 hover:bg-zinc-300 focus:z-20 focus:outline-offset-0"
+            className={clsx(
+              'relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ring-zinc-300 hover:bg-zinc-300 focus:z-20 focus:outline-offset-0',
+              {
+                'pointer-events-none text-zinc-400':
+                  Number(currentPage) >= totalPages,
+              },
+            )}
           >
             <IconChevronRight aria-hidden="true" className="h-5 w-5" />
           </Link>
