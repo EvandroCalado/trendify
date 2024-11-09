@@ -19,7 +19,7 @@ const ShopPage = async ({ searchParams }: props) => {
   if (products.length === 0) return redirect('/');
 
   return (
-    <section className="mx-auto w-full max-w-screen-xl px-5">
+    <section className="mx-auto w-full max-w-screen-xl flex-1 px-5">
       <Title title="Shop" subtitle="Discover the latest trends" />
 
       <ProductsGrid products={products} />
