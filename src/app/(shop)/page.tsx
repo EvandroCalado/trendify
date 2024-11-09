@@ -1,6 +1,6 @@
 import { getPaginatedProducts } from '@/actions/products';
 import { ProductsGrid } from '@/components/products';
-import { Title } from '@/components/ui';
+import { Pagination, Title } from '@/components/ui';
 import { redirect } from 'next/navigation';
 
 type props = {
@@ -12,7 +12,9 @@ type props = {
 const ShopPage = async ({ searchParams }: props) => {
   const { page } = await searchParams;
 
-  const products = await getPaginatedProducts({ page });
+  const { products, totalPages } = await getPaginatedProducts({
+    page,
+  });
 
   if (products.length === 0) return redirect('/');
 
@@ -21,6 +23,8 @@ const ShopPage = async ({ searchParams }: props) => {
       <Title title="Shop" subtitle="Discover the latest trends" />
 
       <ProductsGrid products={products} />
+
+      <Pagination totalPages={totalPages} />
     </section>
   );
 };
