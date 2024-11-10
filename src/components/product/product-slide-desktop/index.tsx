@@ -1,5 +1,6 @@
 'use client';
 
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import Image from 'next/image';
 import React, { FC, useState } from 'react';
 import { Swiper as SwiperClass } from 'swiper';
@@ -26,14 +27,8 @@ export const ProductSlideDesktop: FC<ProductSlideDesktopProps> = ({
     <div className="mb-5 w-full overflow-hidden max-md:hidden">
       {/* gallery */}
       <Swiper
-        style={
-          {
-            '--swiper-navigation-color': '#1d4ed8',
-            '--swiper-pagination-color': '#1d4ed8',
-          } as React.CSSProperties
-        }
         spaceBetween={10}
-        navigation={true}
+        navigation={{ nextEl: '.arrow-right', prevEl: '.arrow-left' }}
         autoplay={{ delay: 2500 }}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs, Autoplay]}
@@ -50,6 +45,13 @@ export const ProductSlideDesktop: FC<ProductSlideDesktopProps> = ({
             />
           </SwiperSlide>
         ))}
+
+        <button className="arrow-left absolute left-4 top-1/2 z-30 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-zinc-300 text-white duration-150 hover:bg-zinc-400 disabled:pointer-events-none disabled:bg-zinc-200/50">
+          <IconChevronLeft />
+        </button>
+        <button className="arrow-right absolute right-4 top-1/2 z-30 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-zinc-300 text-white duration-150 hover:bg-zinc-400 disabled:pointer-events-none disabled:bg-zinc-200/50">
+          <IconChevronRight />
+        </button>
       </Swiper>
 
       {/* thumbnails */}
