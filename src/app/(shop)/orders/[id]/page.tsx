@@ -13,9 +13,7 @@ const productsInCart = [
 ];
 
 type props = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 
 const OrdersByIdPage: FC<props> = async ({ params }) => {

@@ -10,9 +10,7 @@ import { notFound } from 'next/navigation';
 import { FC } from 'react';
 
 type Props = {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 };
 
 const products = initialData.products;

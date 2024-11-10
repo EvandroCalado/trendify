@@ -5,12 +5,8 @@ import { Gender } from '@prisma/client';
 import { notFound, redirect } from 'next/navigation';
 
 type GenderPageProps = {
-  params: {
-    gender: string;
-  };
-  searchParams: {
-    page?: number;
-  };
+  params: Promise<{ gender: string }>;
+  searchParams: Promise<{ page?: number }>;
 };
 
 const GenderPage = async ({ params, searchParams }: GenderPageProps) => {

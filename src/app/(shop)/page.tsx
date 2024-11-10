@@ -4,9 +4,7 @@ import { Pagination, Title } from '@/components/ui';
 import { redirect } from 'next/navigation';
 
 type props = {
-  searchParams: {
-    page?: number;
-  };
+  searchParams: Promise<{ page?: number }>;
 };
 
 const ShopPage = async ({ searchParams }: props) => {
