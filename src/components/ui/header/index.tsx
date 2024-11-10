@@ -6,15 +6,15 @@ import Link from 'next/link';
 
 const links = [
   {
-    href: '/category/men',
+    href: '/gender/men',
     label: 'Men',
   },
   {
-    href: '/category/women',
+    href: '/gender/women',
     label: 'Women',
   },
   {
-    href: '/category/kid',
+    href: '/gender/kid',
     label: 'kid',
   },
 ];

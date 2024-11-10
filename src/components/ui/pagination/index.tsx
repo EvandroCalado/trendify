@@ -16,6 +16,8 @@ export const Pagination: FC<PaginationProps> = ({ totalPages }) => {
   const searchParams = useSearchParams();
   const currentPage = searchParams.get('page') ?? 1;
 
+  if (totalPages <= 1) return null;
+
   const allPages = generatePaginationNumbers({
     totalPages,
     currentPage: Number(currentPage),

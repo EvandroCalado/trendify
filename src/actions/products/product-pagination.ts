@@ -3,6 +3,7 @@
 import { productMapper } from '@/mappers/products';
 import { Product } from '@/types';
 import { prisma } from '@/utils/prisma';
+import { Gender } from '@prisma/client';
 
 type GetPaginatedProductsResponse = {
   totalPages: number;
@@ -12,11 +13,13 @@ type GetPaginatedProductsResponse = {
 type GetPaginatedProductsProps = {
   page?: number;
   take?: number;
+  gender?: Gender;
 };
 
 export const getPaginatedProducts = async ({
   page = 1,
   take = 12,
+  gender,
 }: GetPaginatedProductsProps): Promise<GetPaginatedProductsResponse> => {
   if (isNaN(Number(page))) page = 1;
   if (page < 1) page = 1;
@@ -33,11 +36,18 @@ export const getPaginatedProducts = async ({
           },
         },
       },
+      where: {
+        gender,
+      },
     });
 
     if (!products) return { totalPages: 1, products: [] };
 
-    const totalCount = await prisma.product.count({});
+    const totalCount = await prisma.product.count({
+      where: {
+        gender,
+      },
+    });
     const totalPages = Math.ceil(totalCount / take);
 
     return {
