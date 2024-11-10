@@ -24,7 +24,6 @@ export const ProductSlideMobile: FC<ProductSlideMobileProps> = ({
       <Swiper
         pagination={{ clickable: true }}
         autoplay={{ delay: 2500 }}
-        loop={true}
         modules={[FreeMode, Autoplay, Pagination]}
         className="w-full md:rounded-lg"
       >

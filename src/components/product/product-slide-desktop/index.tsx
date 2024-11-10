@@ -35,7 +35,6 @@ export const ProductSlideDesktop: FC<ProductSlideDesktopProps> = ({
         spaceBetween={10}
         navigation={true}
         autoplay={{ delay: 2500 }}
-        loop={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs, Autoplay]}
         className="mb-5 w-full md:rounded-lg"
