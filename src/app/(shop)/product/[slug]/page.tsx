@@ -9,8 +9,31 @@ import {
   ProductStockLabel,
 } from '@/components/product';
 import { Button } from '@/components/ui';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FC } from 'react';
+
+type GenerateMetadataProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export const generateMetadata = async ({
+  params,
+}: GenerateMetadataProps): Promise<Metadata> => {
+  const { slug } = await params;
+
+  const product = await getProductBySlug({ slug });
+
+  return {
+    title: product?.title ?? 'Product not found',
+    description: product?.description ?? 'Product not found',
+    openGraph: {
+      title: product?.title ?? 'Product not found',
+      description: product?.description ?? 'Product not found',
+      images: [`/products/${product?.images[1]}`],
+    },
+  };
+};
 
 type ProductBySlugPageProps = {
   params: Promise<{ slug: string }>;
