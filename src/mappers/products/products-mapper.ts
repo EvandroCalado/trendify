@@ -19,7 +19,7 @@ type ProductsDataBase = ({
   categoryId: string;
 })[];
 
-export const productMapper = (products: ProductsDataBase): Product[] => {
+export const productsMapper = (products: ProductsDataBase): Product[] => {
   return products.map((product: any) => ({
     ...product,
     images: product.images.map((image: any) => image.url),
