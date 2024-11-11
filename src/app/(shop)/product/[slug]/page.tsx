@@ -26,14 +26,8 @@ const ProductBySlugPage: FC<ProductBySlugPageProps> = async ({ params }) => {
   return (
     <section className="mx-auto grid w-full max-w-screen-xl flex-1 grid-cols-1 md:grid-cols-2 md:px-5 lg:gap-16">
       {/* slide */}
-      <ProductSlideDesktop
-        images={productBySlug.images}
-        title={productBySlug.title}
-      />
-      <ProductSlideMobile
-        images={productBySlug.images}
-        title={productBySlug.title}
-      />
+      <ProductSlideDesktop slug={slug} />
+      <ProductSlideMobile slug={slug} />
 
       {/* details */}
       <div className="w-full space-y-5 px-5">
