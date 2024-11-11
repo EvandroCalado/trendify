@@ -62,7 +62,7 @@ export const initialData: SeedData = {
         'Utility is our goal. Built for any planet is our motto.The Built for Any Planet Hoodie features a high-density orange cyber owl graphic on the front and matching Tesla wordmark on the back. Part of our Built for Any Planet Collection, this oversized hoodie is designed for style and comfort. Made from 100% cotton.',
       images: [
         '2077996-01-A-2-01.avif',
-        '12077996-01-A-2-02.avif',
+        '2077996-01-A-2-02.avif',
         '2077996-01-A-2-03.avif',
         '2077996-01-A-2-04.avif',
       ],
