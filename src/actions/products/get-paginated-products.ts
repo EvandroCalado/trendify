@@ -1,6 +1,6 @@
 'use server';
 
-import { productMapper } from '@/mappers/products';
+import { productsMapper } from '@/mappers/products';
 import { Product } from '@/types';
 import { prisma } from '@/utils/prisma';
 import { Gender } from '@prisma/client';
@@ -52,7 +52,7 @@ export const getPaginatedProducts = async ({
 
     return {
       totalPages: totalPages,
-      products: productMapper(products),
+      products: productsMapper(products),
     };
   } catch (error) {
     throw new Error('Failed to fetch products', { cause: error });
