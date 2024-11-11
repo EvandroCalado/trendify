@@ -32,8 +32,10 @@ export const ProductStockLabel: FC<ProductStockLabelProps> = ({ slug }) => {
       Stock:{' '}
       {loading ? (
         <span className="block h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent" />
-      ) : (
+      ) : inStock ? (
         inStock
+      ) : (
+        'Out of stock'
       )}
     </div>
   );
