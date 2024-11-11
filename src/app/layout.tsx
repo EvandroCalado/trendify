@@ -31,7 +31,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${regular.variable} ${title.variable} antialiased`}>
         {children}
       </body>
