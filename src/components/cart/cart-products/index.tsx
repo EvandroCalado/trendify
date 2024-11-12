@@ -8,7 +8,9 @@ import { useEffect, useState } from 'react';
 import { CartProductsSkeleton } from '../cart-products-skeleton';
 
 export const CartProducts = () => {
-  const { cart, updateProductQuantity } = useCartStore((state) => state);
+  const { cart, updateProductQuantity, removeProductFromCart } = useCartStore(
+    (state) => state,
+  );
 
   const [loaded, setLoaded] = useState(false);
 
@@ -52,7 +54,10 @@ export const CartProducts = () => {
                     updateProductQuantity(product, quantity)
                   }
                 />
-                <button className="border-b-[1px] border-zinc-200 transition-all duration-150 hover:border-zinc-900">
+                <button
+                  className="border-b-[1px] border-zinc-200 transition-all duration-150 hover:border-zinc-900"
+                  onClick={() => removeProductFromCart(product)}
+                >
                   Remove
                 </button>
               </div>
