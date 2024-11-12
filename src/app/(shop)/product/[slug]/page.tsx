@@ -2,13 +2,11 @@ export const revalidate = 60 * 60 * 24 * 7; // 1 week
 
 import { getProductBySlug } from '@/actions/products';
 import {
-  ProductQuantity,
-  ProductSizes,
+  ProductAddToCart,
   ProductSlideDesktop,
   ProductSlideMobile,
   ProductStockLabel,
 } from '@/components/product';
-import { Button } from '@/components/ui';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FC } from 'react';
@@ -56,21 +54,14 @@ const ProductBySlugPage: FC<ProductBySlugPageProps> = async ({ params }) => {
       <div className="w-full space-y-5 px-5">
         <h1 className="font-title text-xl font-bold">{productBySlug.title}</h1>
 
+        {/* in stock */}
         <ProductStockLabel slug={productBySlug.slug} />
 
+        {/* price */}
         <p className="text-lg font-semibold">${productBySlug.price}</p>
 
-        {/* sizes */}
-        <ProductSizes
-          availableSizes={productBySlug.sizes}
-          selectedSize={productBySlug.sizes[0]}
-        />
-
-        {/* quantity */}
-        <ProductQuantity quantity={5} />
-
-        {/* button */}
-        <Button className="max-md:w-full md:px-32">Add to cart</Button>
+        {/* add to cart */}
+        <ProductAddToCart product={productBySlug} />
 
         {/* description */}
         <h3 className="text-sm font-bold">Description</h3>

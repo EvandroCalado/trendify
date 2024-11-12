@@ -1,3 +1,4 @@
+export * from './product-add-to-cart';
 export * from './product-quantity';
 export * from './product-sizes';
 export * from './product-slide-desktop';

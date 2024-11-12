@@ -3,13 +3,15 @@ import clsx from 'clsx';
 import { FC } from 'react';
 
 type ProductSizesProps = {
-  selectedSize: Size;
+  selectedSize?: Size;
   availableSizes: Size[];
+  onSizeChange: (size: Size) => void;
 };
 
 export const ProductSizes: FC<ProductSizesProps> = ({
   selectedSize,
   availableSizes,
+  onSizeChange,
 }) => {
   return (
     <div className="space-y-2">
@@ -22,6 +24,7 @@ export const ProductSizes: FC<ProductSizesProps> = ({
             className={clsx('rounded px-2 hover:bg-zinc-200/50', {
               'bg-zinc-200/50': size === selectedSize,
             })}
+            onClick={() => onSizeChange(size)}
           >
             {size}
           </button>
