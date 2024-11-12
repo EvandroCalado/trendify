@@ -12,7 +12,7 @@ type ProductBySlugPageProps = {
 };
 
 export const ProductAddToCart: FC<ProductBySlugPageProps> = ({ product }) => {
-  const { addToProductCart } = useCartStore((state) => state);
+  const { addProductToCart } = useCartStore((state) => state);
 
   const [size, setSize] = useState<Size | undefined>();
   const [quantity, setQuantity] = useState(1);
@@ -33,7 +33,7 @@ export const ProductAddToCart: FC<ProductBySlugPageProps> = ({ product }) => {
       image: product.images[0],
     };
 
-    addToProductCart(productCart);
+    addProductToCart(productCart);
 
     setPosted(false);
     setSize(undefined);
