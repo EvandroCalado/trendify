@@ -1,7 +1,8 @@
 'use client';
 
 import { Button } from '@/components/ui';
-import { Product, Size } from '@/types';
+import { useCartStore } from '@/stores/cart';
+import { Product, ProductInCart, Size } from '@/types';
 import { FC, useState } from 'react';
 import { ProductQuantity } from '../product-quantity';
 import { ProductSizes } from '../product-sizes';
@@ -11,6 +12,8 @@ type ProductBySlugPageProps = {
 };
 
 export const ProductAddToCart: FC<ProductBySlugPageProps> = ({ product }) => {
+  const { addToProductCart } = useCartStore((state) => state);
+
   const [size, setSize] = useState<Size | undefined>();
   const [quantity, setQuantity] = useState(1);
   const [posted, setPosted] = useState(false);
@@ -19,7 +22,22 @@ export const ProductAddToCart: FC<ProductBySlugPageProps> = ({ product }) => {
     setPosted(true);
 
     if (!size) return;
-    console.log({ size, quantity });
+
+    const productCart: ProductInCart = {
+      id: product.id,
+      slug: product.slug,
+      title: product.title,
+      price: product.price,
+      size,
+      quantity,
+      image: product.images[0],
+    };
+
+    addToProductCart(productCart);
+
+    setPosted(false);
+    setSize(undefined);
+    setQuantity(1);
   };
 
   return (
