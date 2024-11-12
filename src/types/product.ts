@@ -12,6 +12,7 @@ export type Product = {
   slug: string;
   tags: string[];
   title: string;
-  type: Type;
+  // type: Type;
   gender: Gender;
+  categoryId: string;
 };
