@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 
 type CartState = {
   cart: ProductInCart[];
+  getTotalProductsInCart: () => number;
   addToProductCart: (product: ProductInCart) => void;
 };
 
@@ -11,6 +12,13 @@ export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       cart: [],
+
+      getTotalProductsInCart: () => {
+        const { cart } = get();
+
+        return cart.reduce((total, product) => total + product.quantity, 0);
+      },
+
       addToProductCart: (product) => {
         const { cart } = get();
 
