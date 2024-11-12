@@ -1,5 +1,5 @@
-import { CartProducts } from '@/components/cart';
-import { Button, Separator, Title } from '@/components/ui';
+import { CartProducts, CartSummary } from '@/components/cart';
+import { Title } from '@/components/ui';
 import { IconChevronLeft } from '@tabler/icons-react';
 import Link from 'next/link';
 
@@ -22,32 +22,11 @@ const CartPage = () => {
         {/* cart items */}
         <div className="flex flex-col md:col-span-3">
           <CartProducts />
-
-          <Separator className="my-5 bg-zinc-300 md:hidden" />
         </div>
 
         {/* summary */}
-        <div className="flex h-max flex-col justify-between gap-8 rounded-xl bg-white p-7 shadow-xl md:col-span-2">
-          <h2 className="text-xl font-semibold">Order Summary</h2>
-
-          <div className="flex items-center justify-between text-sm">
-            <span>Shipping</span>
-            <span>Free</span>
-          </div>
-
-          <div className="test-sm flex items-center justify-between">
-            <span>Sales Tax</span>
-            <span>Calculated at checkout</span>
-          </div>
-
-          <div className="flex items-center justify-between text-lg font-semibold">
-            <span>Subtotal</span>
-            <span>$245</span>
-          </div>
-
-          <Button as={'a'} href="/checkout/address">
-            Delivery
-          </Button>
+        <div className="flex h-max flex-col justify-between gap-4 rounded-xl bg-white p-7 shadow-xl md:col-span-2">
+          <CartSummary />
         </div>
       </div>
     </section>
