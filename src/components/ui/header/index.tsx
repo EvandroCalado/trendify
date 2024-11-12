@@ -1,8 +1,10 @@
 'use client';
 
+import { useCartStore } from '@/stores/cart';
 import { useUiStore } from '@/stores/ui';
 import { IconSearch, IconShoppingCart } from '@tabler/icons-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const links = [
   {
@@ -20,7 +22,15 @@ const links = [
 ];
 
 export const Header = () => {
+  const { getTotalProductsInCart } = useCartStore((state) => state);
+
   const toggleMenu = useUiStore((state) => state.toggleMenu);
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   return (
     <header className="flex w-full items-center justify-between p-5">
@@ -55,9 +65,11 @@ export const Header = () => {
 
         <Link href="/cart">
           <div className="relative">
-            <span className="absolute -right-1.5 -top-1.5 rounded-full bg-blue-700 px-1 text-xs text-white">
-              3
-            </span>
+            {loaded && getTotalProductsInCart() > 0 && (
+              <span className="absolute -right-1.5 -top-1.5 rounded-full bg-blue-700 px-1 text-xs text-white">
+                {getTotalProductsInCart()}
+              </span>
+            )}
             <IconShoppingCart />
           </div>
         </Link>
