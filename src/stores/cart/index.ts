@@ -2,9 +2,17 @@ import type { ProductInCart } from '@/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+type SummaryInfo = {
+  subTotal: number;
+  tax: number;
+  total: number;
+  totalProductsInCart: number;
+};
+
 type CartState = {
   cart: ProductInCart[];
   getTotalProductsInCart: () => number;
+  getSummaryInfo: () => SummaryInfo;
   addProductToCart: (product: ProductInCart) => void;
   updateProductQuantity: (product: ProductInCart, quantity: number) => void;
   removeProductFromCart: (product: ProductInCart) => void;
@@ -19,6 +27,25 @@ export const useCartStore = create<CartState>()(
         const { cart } = get();
 
         return cart.reduce((total, product) => total + product.quantity, 0);
+      },
+
+      getSummaryInfo: () => {
+        const { cart, getTotalProductsInCart } = get();
+
+        const subTotal = cart.reduce(
+          (total, product) => total + product.price * product.quantity,
+          0,
+        );
+        const tax = subTotal * 0.15;
+        const total = subTotal + tax;
+        const totalProductsInCart = getTotalProductsInCart();
+
+        return {
+          subTotal,
+          tax,
+          total,
+          totalProductsInCart,
+        };
       },
 
       addProductToCart: (product) => {
