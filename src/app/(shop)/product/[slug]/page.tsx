@@ -1,4 +1,4 @@
-export const revalidate = 60 * 60 * 24 * 7; // 1 week
+export const revalidate = 604800; // 60 * 60 * 24 * 7 = 604800 seconds = 1 week
 
 import { getProductBySlug } from '@/actions/products';
 import {
