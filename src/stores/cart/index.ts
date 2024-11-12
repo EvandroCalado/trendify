@@ -6,6 +6,7 @@ type CartState = {
   cart: ProductInCart[];
   getTotalProductsInCart: () => number;
   addToProductCart: (product: ProductInCart) => void;
+  updateProductQuantity: (product: ProductInCart, quantity: number) => void;
 };
 
 export const useCartStore = create<CartState>()(
@@ -40,6 +41,26 @@ export const useCartStore = create<CartState>()(
             return {
               ...cartProduct,
               quantity: cartProduct.quantity + product.quantity,
+            };
+          }
+
+          return cartProduct;
+        });
+
+        set({ cart: newCart });
+      },
+
+      updateProductQuantity: (product, quantity) => {
+        const { cart } = get();
+
+        const newCart = cart.map((cartProduct) => {
+          if (
+            cartProduct.id === product.id &&
+            cartProduct.size === product.size
+          ) {
+            return {
+              ...cartProduct,
+              quantity,
             };
           }
 
