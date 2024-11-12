@@ -13,8 +13,12 @@ type ProductBySlugPageProps = {
 export const ProductAddToCart: FC<ProductBySlugPageProps> = ({ product }) => {
   const [size, setSize] = useState<Size | undefined>();
   const [quantity, setQuantity] = useState(1);
+  const [posted, setPosted] = useState(false);
 
   const addToCart = () => {
+    setPosted(true);
+
+    if (!size) return;
     console.log({ size, quantity });
   };
 
@@ -25,6 +29,12 @@ export const ProductAddToCart: FC<ProductBySlugPageProps> = ({ product }) => {
         selectedSize={size}
         onSizeChange={setSize}
       />
+
+      {posted && !size && (
+        <span className="fade-in text-sm text-red-700">
+          Size is required !
+        </span>
+      )}
 
       <ProductQuantity quantity={quantity} onQuantityChange={setQuantity} />
 
