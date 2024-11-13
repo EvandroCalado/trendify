@@ -2,13 +2,18 @@ import { initialData } from '.';
 import { prisma } from '../utils/prisma';
 
 async function main() {
-  const { categories, products } = initialData;
+  const { categories, products, users } = initialData;
 
   console.log('Clearing database...');
 
+  await prisma.user.deleteMany();
   await prisma.productImage.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
+
+  console.log('Seeding users...');
+
+  await prisma.user.createMany({ data: users });
 
   console.log('Seeding categories...');
 
