@@ -29,6 +29,23 @@ enum Gender {
   unisex
 }
 
+enum Role {
+  admin
+  user
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  emailVerified DateTime
+  password      String
+  role          Role     @default(user)
+  image         String?
+
+  @@map("users")
+}
+
 model Category {
   id   String @id @default(cuid())
   name String @unique
