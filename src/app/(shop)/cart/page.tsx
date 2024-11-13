@@ -1,33 +1,15 @@
 import { CartProducts, CartSummary } from '@/components/cart';
 import { Title } from '@/components/ui';
-import { IconChevronLeft } from '@tabler/icons-react';
-import Link from 'next/link';
 
 const CartPage = () => {
-  // if (productsInCart.length === 0) redirect('/empty');
-
   return (
     <section className="mx-auto w-full max-w-screen-xl flex-1 gap-5 px-5">
       <Title title="Cart" />
 
-      <Link
-        href="/cart"
-        className="flex w-max items-center text-sm font-semibold [&>svg]:transition-all [&>svg]:duration-150 [&>svg]:hover:-ml-1 [&>svg]:hover:mr-1 [&>svg]:hover:text-blue-700"
-      >
-        <IconChevronLeft size={18} />
-        Continue shopping
-      </Link>
+      <div className="mt-5 flex gap-16">
+        <CartProducts />
 
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-5 md:gap-16">
-        {/* cart items */}
-        <div className="flex flex-col md:col-span-3">
-          <CartProducts />
-        </div>
-
-        {/* summary */}
-        <div className="flex h-max flex-col justify-between gap-4 rounded-xl bg-white p-7 shadow-xl md:col-span-2">
-          <CartSummary />
-        </div>
+        <CartSummary />
       </div>
     </section>
   );

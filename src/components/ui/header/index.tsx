@@ -22,9 +22,10 @@ const links = [
 ];
 
 export const Header = () => {
-  const { getTotalProductsInCart } = useCartStore((state) => state);
-
   const toggleMenu = useUiStore((state) => state.toggleMenu);
+  const getTotalProductsInCart = useCartStore((state) =>
+    state.getTotalProductsInCart(),
+  );
 
   const [loaded, setLoaded] = useState(false);
 
@@ -63,11 +64,11 @@ export const Header = () => {
           <IconSearch />
         </Link>
 
-        <Link href="/cart">
+        <Link href={getTotalProductsInCart === 0 ? '/empty' : '/cart'}>
           <div className="relative">
-            {loaded && getTotalProductsInCart() > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 rounded-full bg-blue-700 px-1 text-xs text-white">
-                {getTotalProductsInCart()}
+            {loaded && getTotalProductsInCart > 0 && (
+              <span className="fade-in absolute -right-1.5 -top-1.5 flex h-[17px] w-[17px] items-center justify-center rounded-full bg-blue-700 px-1 text-xs text-white">
+                {getTotalProductsInCart}
               </span>
             )}
             <IconShoppingCart />

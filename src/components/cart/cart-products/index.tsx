@@ -1,16 +1,21 @@
 'use client';
 
 import { ProductQuantity } from '@/components/product';
+import { Empty } from '@/components/ui';
 import { useCartStore } from '@/stores/cart';
+import { IconChevronLeft } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { CartProductsSkeleton } from '../cart-products-skeleton';
 
 export const CartProducts = () => {
-  const { cart, updateProductQuantity, removeProductFromCart } = useCartStore(
-    (state) => state,
-  );
+  const {
+    cart,
+    updateProductQuantity,
+    removeProductFromCart,
+    getTotalProductsInCart,
+  } = useCartStore((state) => state);
 
   const [loaded, setLoaded] = useState(false);
 
@@ -22,8 +27,24 @@ export const CartProducts = () => {
     return <CartProductsSkeleton />;
   }
 
+  if (getTotalProductsInCart() === 0) {
+    return (
+      <div className="col-span-5 my-36 flex w-full items-center justify-center">
+        <Empty />
+      </div>
+    );
+  }
+
   return (
-    <>
+    <div className="mt-5 w-full flex-[3]">
+      <Link
+        href="/"
+        className="mb-5 flex w-max items-center text-sm font-semibold [&>svg]:transition-all [&>svg]:duration-150 [&>svg]:hover:-ml-1 [&>svg]:hover:mr-1 [&>svg]:hover:text-blue-700"
+      >
+        <IconChevronLeft size={18} />
+        Continue shopping
+      </Link>
+
       {cart.map((product) => (
         <div
           key={`${product.slug}-${product.size}`}
@@ -68,6 +89,6 @@ export const CartProducts = () => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
