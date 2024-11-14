@@ -64,7 +64,9 @@ export const Header = () => {
           <IconSearch />
         </Link>
 
-        <Link href={getTotalProductsInCart === 0 ? '/empty' : '/cart'}>
+        <Link
+          href={loaded && getTotalProductsInCart === 0 ? '/empty' : '/cart'}
+        >
           <div className="relative">
             {loaded && getTotalProductsInCart > 0 && (
               <span className="fade-in absolute -right-1.5 -top-1.5 flex h-[17px] w-[17px] items-center justify-center rounded-full bg-blue-700 px-1 text-xs text-white">
