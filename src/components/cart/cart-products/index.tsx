@@ -57,7 +57,7 @@ export const CartProducts = () => {
             height={100}
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="rounded-md max-md:hidden"
+            className="rounded-md max-sm:hidden"
           />
 
           <div className="flex w-full justify-between">
