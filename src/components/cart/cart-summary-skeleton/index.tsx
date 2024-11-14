@@ -1,6 +1,6 @@
 export const CartSummarySkeleton = () => {
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex h-max flex-[2] flex-col gap-7 rounded-xl p-7 shadow-xl">
       <div className="h-[17px] w-[180px] animate-pulse rounded-lg bg-zinc-200" />
 
       <div className="flex items-center justify-between">
